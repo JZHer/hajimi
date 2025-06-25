@@ -211,16 +211,16 @@ async def process_request(
                 extra={'request_type': 'non-stream', 'model': chat_request.model})
             
             if is_gemini :
-                return gemini_from_text(content="麦麦希腊奶",finish_reason="STOP",stream=False)
+                return gemini_from_text(content=" ",finish_reason="STOP",stream=False)
             else:
-                return openAI_from_text(model=chat_request.model,content="麦麦希腊奶",finish_reason="stop",stream=False)
+                return openAI_from_text(model=chat_request.model,content=" ",finish_reason="stop",stream=False)
     
     # 如果所有尝试都失败
     log('error', "API key 替换失败，所有API key都已尝试，请重新配置或稍后重试", extra={'request_type': 'switch_key'})
     
     if is_gemini:
-        return gemini_from_text(content="麦麦希腊奶",finish_reason="STOP",stream=False)
+        return gemini_from_text(content=" ",finish_reason="STOP",stream=False)
     else:
-        return openAI_from_text(model=chat_request.model,content="麦麦希腊奶",finish_reason="stop",stream=False)
+        return openAI_from_text(model=chat_request.model,content=" ",finish_reason="stop",stream=False)
 
     # raise HTTPException(status_code=500, detail=f"API key 替换失败，所有API key都已尝试，请重新配置或稍后重试")
