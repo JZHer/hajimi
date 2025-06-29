@@ -294,9 +294,9 @@ async def stream_response_generator(
                     extra={'request_type': 'stream', 'model': chat_request.model})
                 
                 if is_gemini:
-                    yield gemini_from_text(content="空响应次数达到上限\n请修改输入提示词",finish_reason="STOP",stream=True)
+                    yield gemini_from_text(content=" ",finish_reason="STOP",stream=True)
                 else:
-                    yield openAI_from_text(model=chat_request.model,content="空响应次数达到上限\n请修改输入提示词",finish_reason="stop",stream=True)
+                    yield openAI_from_text(model=chat_request.model,content=" ",finish_reason="stop",stream=True)
                 
                 return
     
@@ -305,9 +305,9 @@ async def stream_response_generator(
         extra={'key': 'ALL', 'request_type': 'stream', 'model': chat_request.model})
     
     if is_gemini:
-        yield gemini_from_text(content="所有API密钥均请求失败\n具体错误请查看轮询日志",finish_reason="STOP",stream=True)
+        yield gemini_from_text(content=" ",finish_reason="STOP",stream=True)
     else:
-        yield openAI_from_text(model=chat_request.model,content="所有API密钥均请求失败\n具体错误请查看轮询日志",finish_reason="stop")
+        yield openAI_from_text(model=chat_request.model,content=" ",finish_reason="stop")
 
 # 处理假流式模式
 async def handle_fake_streaming(api_key,chat_request, contents, response_cache_manager,system_instruction, safety_settings, safety_settings_g2, cache_key):
